@@ -38,12 +38,12 @@ public class GatewayRateLimiterConfig {
 		return exchange -> Mono.just(exchange.getRequest().getPath().value());
 	}
 
-//	/**
-//	 * 用户限流
-//	 */
-//	@Bean(value = "userKeyResolver")
-//	public KeyResolver userKeyResolver() {
-//		return exchange -> Mono.just(Objects.requireNonNull(exchange.getRequest().getHeaders().getFirst("Authorization")));
-//	}
+	/**
+	 * 用户限流
+	 */
+	@Bean(value = "userKeyResolver")
+	public KeyResolver userKeyResolver() {
+		return exchange -> Mono.just(Objects.requireNonNull(exchange.getRequest().getHeaders().getFirst("Authorization")));
+	}
 
 }

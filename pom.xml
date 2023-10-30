@@ -14,6 +14,7 @@
 		<module>gateway-server</module>
 		<module>gateway-client</module>
 		<module>gateway-module</module>
+		<module>gateway-client-reactive</module>
 	</modules>
 
 	<properties>

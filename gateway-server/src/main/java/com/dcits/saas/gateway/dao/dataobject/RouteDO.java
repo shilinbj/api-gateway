@@ -1,5 +1,6 @@
 package com.dcits.saas.gateway.dao.dataobject;
 
+import com.dcits.saas.gateway.module.vo.RouteVO;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -27,14 +28,14 @@ import java.util.Map;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-@Table("manage_gateway_route")
-public class ManageGatewayRouteDO {
+@Table("gateway_route")
+public class RouteDO {
 
 	/**
-	 * 路由Code
+	 * 路由Id
 	 */
 	@Id
-	private String routeId;
+	private Long routeId;
 
 	/**
 	 * 路由名称
@@ -77,9 +78,9 @@ public class ManageGatewayRouteDO {
 	private Integer limitBurstCapacity;
 
 	/**
-	 * 是否启用：1-启用 0-禁用
+	 * 是否启用
 	 */
-	private Integer enableFlag;
+	private boolean isEnabled;
 
 	/**
 	 * 创建时间
@@ -101,9 +102,53 @@ public class ManageGatewayRouteDO {
 	 */
 	private LocalDateTime updateTime;
 
+	/**
+	 * 更新人ID
+	 */
+	private String updaterId;
+
+	/**
+	 * 更新人名称
+	 */
+	private String updaterName;
+
+	public RouteDO(RouteVO routeVO) {
+		this.routeId = routeVO.getRouteId();
+		this.routeName = routeVO.getRouteName();
+		this.routeUri = routeVO.getRouteUri();
+		this.routePaths = routeVO.getRoutePaths();
+		this.routeSort = routeVO.getRouteSort();
+		this.limitStrategyCode = routeVO.getLimitStrategyCode();
+		this.limitStrategy = routeVO.getLimitStrategy();
+		this.limitReplenishRate = routeVO.getLimitReplenishRate();
+		this.limitBurstCapacity = routeVO.getLimitBurstCapacity();
+		this.isEnabled = routeVO.isEnabled();
+	}
+
+	public RouteVO toRouteVo() {
+		return RouteVO.builder()
+				.routeId(this.getRouteId())
+				.routeName(this.routeName)
+				.routeUri(this.routeUri)
+				.routePaths(this.routePaths)
+				.routeSort(this.routeSort)
+				.limitStrategyCode(this.limitStrategyCode)
+				.limitStrategy(this.limitStrategy)
+				.limitReplenishRate(this.limitReplenishRate)
+				.limitBurstCapacity(this.limitBurstCapacity)
+				.isEnabled(this.isEnabled)
+				.createTime(this.createTime)
+				.creatorId(this.creatorId)
+				.creatorName(this.creatorName)
+				.updateTime(this.updateTime)
+				.updaterId(this.updaterId)
+				.updaterName(this.updaterName)
+				.build();
+	}
+
 	public RouteDefinition toRouteDefinition() {
 		RouteDefinition routeDefinition = new RouteDefinition();
-		routeDefinition.setId(this.getRouteId());
+		routeDefinition.setId(this.getRouteId().toString());
 		URI routeUri = UriComponentsBuilder.fromUriString(this.getRouteUri()).build().toUri();
 		routeDefinition.setUri(routeUri);
 		routeDefinition.setOrder(this.getRouteSort());

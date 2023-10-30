@@ -7,14 +7,14 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.redis.connection.ReactiveRedisConnectionFactory;
 import org.springframework.data.redis.connection.ReactiveSubscription;
-import org.springframework.data.redis.core.ReactiveRedisOperations;
 import org.springframework.data.redis.listener.ChannelTopic;
 import org.springframework.data.redis.listener.ReactiveRedisMessageListenerContainer;
-import org.springframework.stereotype.Component;
 
 import static com.dcits.saas.gateway.constants.GatewayConstants.TOPIC_REFRESH_ROUTES;
 
 /**
+ * Listener of redis.
+ *
  * @author Klaus
  * @since 2023/10/27
  */
@@ -25,6 +25,12 @@ public class RouteRefreshConsumer {
 
 	private final RoutePublishService publishService;
 
+	/**
+	 * Refreshing routes by listening to Redis.
+	 *
+	 * @param factory
+	 * @return
+	 */
 	@Bean
 	public ReactiveRedisMessageListenerContainer container(ReactiveRedisConnectionFactory factory) {
 		ReactiveRedisMessageListenerContainer container = new ReactiveRedisMessageListenerContainer(factory);

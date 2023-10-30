@@ -9,6 +9,16 @@
 	<groupId>com.klaus</groupId>
 	<artifactId>gateway-module</artifactId>
 
-
+	<dependencies>
+		<dependency>
+			<groupId>com.fasterxml.jackson.core</groupId>
+			<artifactId>jackson-annotations</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.projectlombok</groupId>
+			<artifactId>lombok</artifactId>
+			<optional>true</optional>
+		</dependency>
+	</dependencies>
 
 </project>
