@@ -1,0 +1,28 @@
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    nacos:
+      discovery:
+        server-addr: ${nacos.server-addr}
+        namespace: ${nacos.namespace}
+        username: ${nacos.username}
+        password: ${nacos.password}
+      config:
+        server-addr: ${nacos.server-addr}
+        namespace: ${nacos.namespace}
+        username: ${nacos.username}
+        password: ${nacos.password}
+        shared-configs:
+          - data-id: redis.yml
+            refresh: false
+          - data-id: mysql-r2dbc.yml
+            refresh: false
+          - data-id: api-gateway.yml
+            refresh: true
+
+nacos:
+  server-addr: localhost:8848
+  namespace: klaus
+  username: nacos
+  password: nacos
