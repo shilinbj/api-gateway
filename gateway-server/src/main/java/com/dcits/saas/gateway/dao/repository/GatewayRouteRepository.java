@@ -14,8 +14,9 @@ import reactor.core.publisher.Mono;
 @Repository
 public interface GatewayRouteRepository extends R2dbcRepository<RouteDO, Long> {
 
-	@Query("select * from gateway_route where enable_flag = 1")
-	Flux<RouteDO> findAllEnabled();
+    // Wrong column name will lead to empty results.
+    @Query("select * from gateway_route where is_enabled = 1")
+    Flux<RouteDO> findAllEnabled();
 
 	@Query("update gateway_route set is_enabled = :isEnabled where route_id = :id")
 	Mono<Long> updateStatus(Long id, boolean isEnabled);
