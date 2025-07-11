@@ -21,10 +21,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
-		<spring-boot.version>3.1.5</spring-boot.version>
-		<spring-cloud.version>2022.0.4</spring-cloud.version>
-		<spring-cloud-alibaba.version>2022.0.0.0</spring-cloud-alibaba.version>
-		<jackson.version>2.15.2</jackson.version>
+                <spring-boot.version>3.5.3</spring-boot.version>
+                <!-- Spring Cloud 2024.x line is compatible with Spring Boot 3.5 -->
+                <spring-cloud.version>2024.0.0</spring-cloud.version>
+                <!-- Use the matching Spring Cloud Alibaba release -->
+                <spring-cloud-alibaba.version>2024.0.0.0</spring-cloud-alibaba.version>
+                <jackson.version>2.17.0</jackson.version>
 	</properties>
 
 	<dependencyManagement>
@@ -89,12 +91,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-					<version>3.3.1</version>
+                                        <version>3.3.2</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-					<version>3.3.0</version>
+                                        <version>3.3.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
@@ -108,7 +110,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-				<version>3.11.0</version>
+                                <version>3.11.1</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
