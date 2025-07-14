@@ -21,12 +21,12 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
 		<java.version>17</java.version>
-                <spring-boot.version>3.5.3</spring-boot.version>
-                <!-- Spring Cloud 2024.x line is compatible with Spring Boot 3.5 -->
-                <spring-cloud.version>2024.0.0</spring-cloud.version>
-                <!-- Use the matching Spring Cloud Alibaba release -->
-                <spring-cloud-alibaba.version>2024.0.0.0</spring-cloud-alibaba.version>
-                <jackson.version>2.17.0</jackson.version>
+		<spring-boot.version>3.5.3</spring-boot.version>
+		<!-- Spring Cloud 2024.x line is compatible with Spring Boot 3.5 -->
+		<spring-cloud.version>2024.0.0</spring-cloud.version>
+		<!-- Use the matching Spring Cloud Alibaba release -->
+		<spring-cloud-alibaba.version>2023.0.3.3</spring-cloud-alibaba.version>
+		<jackson.version>2.17.0</jackson.version>
 	</properties>
 
 	<dependencyManagement>
@@ -91,12 +91,12 @@
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-resources-plugin</artifactId>
-                                        <version>3.3.2</version>
+					<version>3.3.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.apache.maven.plugins</groupId>
 					<artifactId>maven-source-plugin</artifactId>
-                                        <version>3.3.1</version>
+					<version>3.3.1</version>
 				</plugin>
 				<plugin>
 					<groupId>org.springframework.boot</groupId>
@@ -110,7 +110,7 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
-                                <version>3.11.1</version>
+				<version>3.13.0</version>
 				<configuration>
 					<source>${java.version}</source>
 					<target>${java.version}</target>
@@ -119,21 +119,22 @@
 		</plugins>
 	</build>
 
-	<repositories>
-		<repository>
-			<id>dcits</id>
-			<url>http://10.0.42.218:8081/repository/maven-public/</url>
-		</repository>
-	</repositories>
-
 	<distributionManagement>
 		<repository>
 			<id>dcits</id>
-			<url>http://10.0.42.218:8081/repository/maven-releases/</url>
+			<url>http://nexus.datacenter.dcits.com/repository/maven-releases/</url>
+			<releases>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</releases>
 		</repository>
 		<snapshotRepository>
 			<id>dcits</id>
-			<url>http://10.0.42.218:8081/repository/maven-snapshots/</url>
+			<url>http://nexus.datacenter.dcits.com/repository/maven-snapshots/</url>
+			<snapshots>
+				<enabled>true</enabled>
+				<updatePolicy>always</updatePolicy>
+			</snapshots>
 			<uniqueVersion>false</uniqueVersion>
 		</snapshotRepository>
 	</distributionManagement>
